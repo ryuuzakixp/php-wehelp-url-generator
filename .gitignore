@@ -1,0 +1,19 @@
+/vendor/*
+/tmp/*
+/logs/*
+/.idea
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+composer.lock
+/nbproject/private/
+.lh
+.lock
+.phpunit.cache
