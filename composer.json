@@ -1,0 +1,27 @@
+{
+    "name": "ryuuzakixp/php-wehelp-url-generator",
+    "description": "Function to help generate valid url for surveys on Wehelp",
+    "type": "library",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "WeHelpUrlGenerator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WeHelpUrlGenerator\\Test\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Zamora",
+            "email": "daniel.e.zamoras@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.0.0"
+    }
+}
