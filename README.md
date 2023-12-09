@@ -15,10 +15,10 @@ Example minimum data required
 ```php
     use WeHelpUrlGenerator\SurveyLink;
 
-    $encryptKey = "xxxx";
+    $encryptKey = 'xxxx';
 
     $url = SurveyLink::generate([
-        'code' => "xxx",
+        'code' => 'xxx',
         'experience_id' => 'xxxx', 
         'experience_date' => 'xxx',//Y-m-d H:i:s
         'company_unit_code' => 'xxxx', 
@@ -35,10 +35,10 @@ Example full data
 ```php
     use WeHelpUrlGenerator\SurveyLink;
 
-    $encryptKey = "xxxx";
+    $encryptKey = 'xxxx';
 
     $url = SurveyLink::generate([
-        'code' => "xxx",
+        'code' => 'xxx',
         'experience_id' => 'xxxx', 
         'experience_date' => 'xxx',//Y-m-d H:i:s
         'company_unit_code' => 'xxxx', 
