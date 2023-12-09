@@ -11,9 +11,9 @@ class SurveyLink
     {
         $this->validationRequiredFields($data);
 
-        $header = json_encode(['alg' => 'HS256', 'typ' => 'JWT'], true);
+        $header = json_encode(['alg' => 'HS256', 'typ' => 'JWT']);
 
-        $payload = json_encode($data, true);
+        $payload = json_encode($data);
 
         $signature = hash_hmac('sha256', $header . $payload, $encryptKey, true);
 
