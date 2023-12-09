@@ -10,10 +10,10 @@ class SurveyLinkTest extends TestCase
 {
     public function testGenerate_WhenDataIsValid_ReturnValidUrl()
     {
-        $encryptKey = "xxxx";
+        $encryptKey = 'xxxx';
 
         $url = SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -26,11 +26,12 @@ class SurveyLinkTest extends TestCase
         ], $encryptKey);
 
         $this->assertNotEmpty($url);
+        $this->assertStringContainsString("https://app.wehelpsoftware.com/survey_persons/link", $url);
     }
 
     public function testGenerate_WhenDataNoHasValidFields_ReturnRequiredFieldException()
     {
-        $encryptKey = "xxxx";
+        $encryptKey = 'xxxx';
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
@@ -48,7 +49,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             //'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -62,7 +63,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             //'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -76,7 +77,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             //'company_unit_code' => 'xxxx', 
@@ -90,7 +91,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -104,7 +105,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -118,7 +119,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -132,7 +133,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
@@ -146,7 +147,7 @@ class SurveyLinkTest extends TestCase
 
         $this->expectException(RequiredFieldException::class);
         SurveyLink::generate([
-            'code' => "xxx",
+            'code' => 'xxx',
             'experience_id' => null, 
             'experience_date' => 'xxx',
             'company_unit_code' => 'xxxx', 
