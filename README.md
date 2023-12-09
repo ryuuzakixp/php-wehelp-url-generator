@@ -19,13 +19,13 @@ Example minimum data required
 
     $url = SurveyLink::generate([
         'code' => "xxx",
-        'experience_id' => null, 
-        'experience_date' => 'xxx',
+        'experience_id' => 'xxxx', 
+        'experience_date' => 'xxx',//Y-m-d H:i:s
         'company_unit_code' => 'xxxx', 
         'person' => [
             'name' => 'xxxx', 
             'internal_code' => 'xxxxx', 
-            'type' => 'xxxxx',
+            'type' => 'xxxxx',//CUSTOMER,COLLABORATOR
             'company_unit_code' => 'xxx'
         ]
     ], $encryptKey);
@@ -39,13 +39,13 @@ Example full data
 
     $url = SurveyLink::generate([
         'code' => "xxx",
-        'experience_id' => null, 
-        'experience_date' => 'xxx',
+        'experience_id' => 'xxxx', 
+        'experience_date' => 'xxx',//Y-m-d H:i:s
         'company_unit_code' => 'xxxx', 
         'person' => [
             'name' => 'xxxx', 
             'internal_code' => 'xxxxx', 
-            'type' => 'xxxxx',
+            'type' => 'xxxxx',//CUSTOMER,COLLABORATOR
             'company_unit_code' => 'xxx',
             'created_at' => '2022-10-10',
             'date_of_birth' => '1988-07-06',
