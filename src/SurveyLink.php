@@ -10,6 +10,8 @@ class SurveyLink
     private function __construct(array $data, string $encryptKey)
     {
         $this->validationRequiredFields($data);
+        
+        $data = $this->normalizeFieldsToString($data);
 
         if (isset($data['cf']) && is_array($data['cf']) && empty($data['cf'])) {
             unset($data['cf']);
@@ -76,5 +78,33 @@ class SurveyLink
                 throw new RequiredFieldException("Required field: $key not found");
             }
         }
+    }
+
+    /**
+     * Normalizes specific fields to string, converting numbers to strings
+     */
+    private function normalizeFieldsToString(array $data): array
+    {
+        // Root level fields that should be strings
+        $stringFields = ['code', 'company_unit_code'];
+        
+        foreach ($stringFields as $field) {
+            if (isset($data[$field]) && (is_int($data[$field]) || is_float($data[$field]))) {
+                $data[$field] = (string) $data[$field];
+            }
+        }
+        
+        // Fields inside 'person' that should be strings
+        if (isset($data['person']) && is_array($data['person'])) {
+            $personStringFields = ['internal_code', 'company_unit_code'];
+            
+            foreach ($personStringFields as $field) {
+                if (isset($data['person'][$field]) && (is_int($data['person'][$field]) || is_float($data['person'][$field]))) {
+                    $data['person'][$field] = (string) $data['person'][$field];
+                }
+            }
+        }
+        
+        return $data;
     }
 }

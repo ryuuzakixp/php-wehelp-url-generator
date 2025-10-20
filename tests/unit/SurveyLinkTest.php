@@ -236,6 +236,49 @@ class SurveyLinkTest extends TestCase
         $this->assertEquals([11 => 'valor1', 12 => 'valor2'], $payload['cf']);
     }
 
+    public function testGenerate_WhenNumericFieldsProvided_ShouldConvertToString()
+    {
+        $encryptKey = 'test-secret-key';
+
+        $url = SurveyLink::generate([
+            'code' => 123,  // Integer number
+            'experience_id' => 1, 
+            'experience_date' => '2025-10-20',
+            'company_unit_code' => 456, // Integer number
+            'person' => [
+                'name' => 'Test User', 
+                'internal_code' => 77, // Integer number (user's example)
+                'type' => 'customer',
+                'company_unit_code' => 789 // Integer number
+            ]
+        ], $encryptKey);
+
+        // Extract token from URL
+        $this->assertNotEmpty($url);
+        $queryString = parse_url($url, PHP_URL_QUERY);
+        parse_str($queryString, $params);
+        $token = $params['access_token'];
+
+        // Decode JWT payload
+        $parts = explode('.', $token);
+        $this->assertCount(3, $parts, 'JWT must have 3 parts');
+        
+        $payload = json_decode($this->base64UrlDecode($parts[1]), true);
+
+        // Verify that numeric fields were converted to strings
+        $this->assertIsString($payload['code'], 'code should be converted to string');
+        $this->assertEquals('123', $payload['code']);
+        
+        $this->assertIsString($payload['company_unit_code'], 'company_unit_code should be converted to string');
+        $this->assertEquals('456', $payload['company_unit_code']);
+        
+        $this->assertIsString($payload['person']['internal_code'], 'person.internal_code should be converted to string');
+        $this->assertEquals('77', $payload['person']['internal_code']);
+        
+        $this->assertIsString($payload['person']['company_unit_code'], 'person.company_unit_code should be converted to string');
+        $this->assertEquals('789', $payload['person']['company_unit_code']);
+    }
+
     /**
      * Helper method to decode base64 URL
      */
