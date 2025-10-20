@@ -4,12 +4,16 @@ namespace WeHelpUrlGenerator;
 
 class SurveyLink
 {
-    private const BASE_URL = 'https://app.wehelpsoftware.com/survey_persons/link';
+    private const BASE_URL = 'https://app.wehelpsoftware.com/link';
     private string $queryParams;
 
     private function __construct(array $data, string $encryptKey)
     {
         $this->validationRequiredFields($data);
+
+        if (isset($data['cf']) && is_array($data['cf']) && empty($data['cf'])) {
+            unset($data['cf']);
+        }
 
         $header = json_encode(['alg' => 'HS256', 'typ' => 'JWT']);
 
